@@ -20,28 +20,35 @@ Lista de Productos:
 #[1] Agregar, [2] Eliminar, [3] Actualizar, [4] Salir
 #Elija opción:
 
+#Clase STORE en el cual definiremos nuestros metodos(agregar, eliminar, actualizar y salir)
 
 class store:
-    def __init__(self):
+    
+    #Definimos nuestros atributos con los productos iniciales
+        def __init__(self):
         self.Productos = {1:'Pantalones', 2:'Camisas', 3:'Corbatas', 4:'Casacas'}
         self.Precios = {1:200.00, 2:120.00, 3:50.00, 4:350.00}
         self.Stock = {1:50, 2:45, 3:30, 4:15}
     
+    #Metodo mostrar(), nos imprimira todos los productos en nuestros diccionarios
     def mostrar(self):
         print("="*40)
         print("Lista de Productos:")
         print("="*40)
 
         for i in self.Productos:
+            #Imprimime -> id, producto, precio, stock de cada producto
             print(i,self.Productos[i],self.Precios[i],self.Stock[i])
         
         print("="*40)
-
+        
+    #Metodo agregar(...) agrega datos del producto, tiene como parametros el id, nombre del prducto, precio y stock.
     def agregar(self,id,producto,precio,stock):
         self.Productos[id]=producto
         self.Precios[id]=precio
         self.Stock[id]=stock
     
+    #Metodo eliminar(...) eliminar un los datos de un producto de acuerdo al id ingresado.
     def eliminar(self,id):
         ids = list(self.Productos.keys())
         if id in ids:
@@ -51,7 +58,8 @@ class store:
             return True
         else:
             return False
-            
+    
+    #Metodo actualizar() actualiza algun dato de un producto existente, el parametro atributo puede ser el producto, precio o stock a actualizar, nuevo es el nuevo dato actualizado
     def actualizar(self,id,atributo,nuevo):
         if(atributo == 1):
             self.Productos[id]= nuevo
@@ -64,10 +72,11 @@ class store:
             return True
         else:
             return False
-    
+    #Metodo salir()
     def salir(self):
         return
     
+    #Metodo menu(), realiza un menu de todas las acciones a realizar(agregar, eliminar, actualizar o salir)
     def menu(self):
         
         opciones = {1:"Agregar",2:"Eliminar",3:"Actualizar",4:"Salir"}
@@ -165,7 +174,7 @@ class store:
 
         
 
-
+#Crea una instancia  de la clase store()
 s = store()
 s.mostrar()
 s.menu()
